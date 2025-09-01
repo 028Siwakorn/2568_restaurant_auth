@@ -3,12 +3,13 @@ const app = express();
 import dotenv from "dotenv";
 import restaurantRouter from "./routers/restaurant.router.js";
 import authRouter from "./routers/auth.router.js";
+const FRONTEND_URL = process.env.FRONTEND_URL;
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 import cors from "cors";
 app.use(
   cors({
-    origin: ["http://localhost:5173", "127.0.0.1:5173"],
+    origin: ["http://localhost:5173", "127.0.0.1:5173", FRONTEND_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "x-access-token"],
   })
